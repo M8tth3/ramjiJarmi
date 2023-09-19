@@ -1,12 +1,11 @@
 ---
 toc: false
 comments: true
-layout: post
+layout: hack
 title: Documentation for Program With purose
 description: PBL Unit 1 / Week 2 plan using Utterance
 type: plans
-courses: { compsci: {week: 2} }
-permalink: /plans/week2
+courses: { compsci: {week: 4} }
 ---
 # Chemistry Aid Tool and Calculator Documentation
 ## Introduction
