@@ -20,6 +20,7 @@ This is a Python-based Chemistry Aid Tool and Calculator designed to assist user
 - gramtomolecule()
 - PVnRT()
 - Ehv()
+- List and Iteration
 - User Interface
 - Usage
 
