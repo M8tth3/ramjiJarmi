@@ -66,12 +66,15 @@ This function allows users to solve various gas law equations (PV=nRT) for diffe
 This function allows users to perform calculations related to energy (E) and frequency (v) using Planck's constant (h). Users can choose to solve for energy or frequency, and the function prompts for the required input data to perform the calculation.
 
 
+## 4. List and Iteration
+The code iterates through the list of possible actions the user can choose from and constantly compares each item in the list they entered to determine the action selected.
 
-## 4. User Interface
+
+## 5. User Interface
 The program starts with a welcome message and presents a list of available actions, numbered from 1 to 6. Users can select an action by entering the corresponding number or exit the program by entering 'q'. The program continuously loops, allowing users to perform multiple calculations or exit at any time.
 
 
-## 5. Usage
+## 6. Usage
 To use this Chemistry Aid Tool and Calculator:
 
 Run the Python script.
