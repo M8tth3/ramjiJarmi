@@ -2,8 +2,7 @@
 toc: false
 comments: true
 layout: hack
-title: Documentation for Program With purose
-description: PBL Unit 1 / Week 2 plan using Utterance
+title: Documentation for Program With Purpose
 type: plans
 courses: { compsci: {week: 4} }
 ---
