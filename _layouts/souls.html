@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<link rel="stylesheet" href="/ramjiJarmi/souls/css/style.css">
+<style>
+
+</style>
+
+<div >
+    <p class="introMessage anim-typewriter" id="intro">
+        Hi! Welcome to Terminal Souls! Hope you enjoy the game and try out the original Dark Souls games for yourself. They're really good! 
+    </p>
+    
+    <button class = "button" id="loadTerminalSouls" onclick="loadStartscreen()">
+        Click here
+    </button>
+</div>
+
+<div class="container">
+    <div class="titleScreen" id="title">
+        <pre>
+████████╗███████╗██████╗ ███╗   ███╗██╗███╗   ██╗ █████╗ ██╗         ███████╗ ██████╗ ██╗   ██╗██╗     ███████╗
+╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██║████╗  ██║██╔══██╗██║         ██╔════╝██╔═══██╗██║   ██║██║     ██╔════╝
+   ██║   █████╗  ██████╔╝██╔████╔██║██║██╔██╗ ██║███████║██║         ███████╗██║   ██║██║   ██║██║     ███████╗
+   ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║██║╚██╗██║██╔══██║██║         ╚════██║██║   ██║██║   ██║██║     ╚════██║
+   ██║   ███████╗██║  ██║██║ ╚═╝ ██║██║██║ ╚████║██║  ██║███████╗    ███████║╚██████╔╝╚██████╔╝███████╗███████║
+   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝    ╚══════╝ ╚═════╝  ╚═════╝ ╚══════╝╚══════╝
+        </pre>
+        <div>
+            <button class="button" onclick="window.location.href = '/ramjiJarmi/souls/game.html'">
+                New Game
+            </button>
+        </div>
+        <button class="button" id="abtTGame" onclick="showParagraph()">
+            About
+        </button>
+        <div>
+        <button class="button" id="settings">
+            Settings
+        </button>
+        <div>
+        <div id="paragraph">
+            <p>
+                    This is a recreation of title screen of Dark Souls. A brutally hard game that is extremely fun to play, with over 100 hours invested in this game I am excited to recreate parts of it in this project.
+                Check out some videos of people having lots of fun with this game:
+                    <a href="https://www.youtube.com/watch?v=5SaW0oKTisk&t=52s">People having jolly good fun with Dark Souls 1</a>
+                If you are having trouble with the game:
+                    <a href="https://www.thegamer.com/dark-souls-tips-beginners/"> Get Better </a>
+            </p>
+        </div>
+        <div id="startParagraph">
+            Read the first line. There is nothing else developed because Matthew has procracinated this assignment for too long. 
+        </div>
+    </div>
+</div>
+<footer>
+    <div>
+        <p id="footerMessage">
+            Terminal Souls: Epic CSP project created by RamjiJarmi
+        </p>
+    </div>
+</footer>
+<script>
+    var div = document.getElementById("paragraph");
+    function showParagraph()
+    {
+        document.getElementById("startParagraph").style.display = "none";
+        document.getElementById("paragraph").style.display = "block";
+    }
+    function changeParagraph()
+    {
+        document.getElementById('paragraph').style.display="none";
+        document.getElementById('startParagraph').style.display="block";
+    }
+    function loadStartscreen()
+    {
+        document.getElementById("title").style.display="block";
+        document.getElementById("intro").style.display="none";
+        document.getElementById("footerMessage").style.display="block";
+        document.getElementById("loadTerminalSouls").style.display="none";
+        
+        // const musicContainer = document.getElementById("menuMusic");
+        //const menuMusic = document.createElement("audio");
+        
+        //musicContainer.appendChild(menuMusic); 
+
+    }
+</script>

@@ -1,0 +1,103 @@
+body {
+    background-color: #000000;
+}
+footer {
+    padding: 125px
+}
+html{
+    overflow: hidden;
+}
+.titleScreen
+{
+    animation: fadeIn 3s;
+    font-size: 1.6em;
+    text-align:center;
+    color: white;
+    height: 100%;
+    width: 100%;
+}
+.container
+{
+    display: flex; 
+    justify-content: center; 
+    margin-top: 225px;
+    align-items: center;/* Vertically center the child */
+    top: 50px;
+}
+#title
+{
+    display: none;
+}
+#footerMessage
+{
+    color: white;
+    font-family: "Garamond", Times, serif;
+    font-size: 16px;
+    text-align: center;
+    display: none;
+}
+.button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    text-align: center;
+    font-family: "Garamond", Times, serif;
+    font-size: 24px;
+}
+.button:hover{
+    width: 325px;
+    background-color: #460000;
+}
+.introMessage
+{
+    font-family: "Garamond", Times, serif;
+    position: relative;
+    white-space: nowrap;
+    margin: 0 auto;
+    font-size: 130%;
+    overflow: hidden;
+    border-right: 2px solid;
+    color: white;
+}
+#loadTerminalSouls
+{
+    display: "block";
+}
+#intro
+{
+    display: "block";
+}
+.anim-typewriter{
+    animation: typewriter 4s steps(44) 1s 1 normal both,
+        blinkTextCursor 500ms
+    steps(44) infinite normal;
+}
+#paragraph
+{
+    display:none;
+    font-family: "Garamond", Times, serif;
+    text-align: center;
+} 
+#startParagraph
+{
+    display:none;
+    font-family: "Garamond", Times, serif;
+    text-align: center;
+}  
+
+@keyframes typewriter{
+    from{width: 0;}
+    to{width: 52em;}
+}
+@keyframes blinkTextCursor{
+    from{border-right-color:rba(255,255,255,.75)}
+    to{border-right-color: transparent;}
+}
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
