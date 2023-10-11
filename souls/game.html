@@ -16,6 +16,16 @@
         position: absolute;
         top: 50px;
     }
+    #healthbar {
+            width: 100%;
+            height: 20px;
+            background-color: red;
+        }
+
+        #currentHealth {
+            height: 20px;
+            background-color: green;
+        }
 </style>
 <!-- add style.css sheet later -->
 <body>
@@ -41,10 +51,5 @@
 </div>
 
 <script>
-    let bossHealth = 1000;
-    function updateHealth() {
-        const healthBar = document.getElementById('currentHealth');
-        healthBar.style.width = (bossHealth / 10) + '%';
-    }
 
 </script>
