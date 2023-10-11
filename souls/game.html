@@ -12,6 +12,10 @@
     .container{
         margin-left: 25%;
     }
+    .bossHP{
+        position: absolute;
+        top: 50px;
+    }
 </style>
 <!-- add style.css sheet later -->
 <body>
@@ -30,7 +34,17 @@
     <div>
 </body>
 
-<script>
+<div class="bossHP">
+    <div id="healthbar">
+        <div id="currentHealth" style="width:100%"></div>
+    </div>
+</div>
 
+<script>
+    let bossHealth = 1000;
+    function updateHealth() {
+        const healthBar = document.getElementById('currentHealth');
+        healthBar.style.width = (bossHealth / 10) + '%';
+    }
 
 </script>
