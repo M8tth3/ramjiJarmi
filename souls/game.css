@@ -10,6 +10,7 @@ label {
 .dashed-divider {
     border: 3px dashed #fff;
     margin: auto;
+    width: 100%;
 }
 .container{
     width: 100%;
@@ -17,7 +18,7 @@ label {
 }
 
 #commandPrompt{
-    width: 80%;
+    width: 100%;
     position:relative;
     padding-top: 10px;
     background-color: #000;

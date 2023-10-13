@@ -1,16 +1,20 @@
 let lineCounter = 1;
 function validCommand(input)
 {
-    console.log(input);
-    // const validCommands = ["cd","ls","clear"]
-    // if (input in validCommands)
-    // {
-
-    // }
-    // else
-    // {
+    rooms = [{"name": "room1", "items": "Dungeon Jail Cell Key"}]
+    input = input.split('')
+    const validCommands = ["cd","ls","clear"]
+    if (input[0].includes(validCommands))
+    {
+        if(input[0] === 'ls')
+        {
+            console.log("hello")
+        }
+    }
+    else
+    {
         
-    // }
+    }
 }
 function newInputLine()
 {
