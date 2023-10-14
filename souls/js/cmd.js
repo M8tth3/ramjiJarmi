@@ -69,7 +69,8 @@ the current input line in the `commandPrompt` container. Essentially, it is addi
 output to the command prompt if the user input matches a specific command. */
         const cmdInput = document.getElementById(`userInput${lineCounter-1}`).value;
         var commandPrompt = document.getElementById(`inputLine${lineCounter}`);
-        var line = document.getElementById(`label${lineCounter}`)
+        var line = document.getElementById(`label${lineCounter}`);
+        let jasonText;
         if (cmdInput === 'ls')
         {
             const list = document.createElement("div");
@@ -86,9 +87,32 @@ output to the command prompt if the user input matches a specific command. */
             list.appendChild(document.createTextNode("**Rooms**"))
             list.appendChild(document.createElement("br"));
             list.appendChild(rooms);
+            list.append(lineBreak);
+            list.appendChild(document.createTextNode("engage_in_jollyCoop.sh"));
             commandPrompt.insertBefore(list,line);
         }
+        if (cmdInput === './engage_in_jollyCoop.sh')
+        {
+            const lineBreak = document.createElement("br");
+            const cop = document.createElement("div");
+            cop.classList.add("output");
+            cop.appendChild(document.createTextNode("Who would you like to engage in jolly cooperation with?:"));
+            cop.appendChild(lineBreak);
+            //get users from database
+            jasonText = Object.entries(jason).map(([key, value]) => `${key}: ${value}`).join(" ");
+            cop.appendChild(document.createTextNode(jasonText));
+            commandPrompt.insertBefore(cop,line);
+        }
         if (cmdInput === 'cd boss_room')
+        {
+            const list = document.createElement("div");
+            list.classList.add("output");
+            list.appendChild(document.createTextNode("bossBattle.sh"));
+            
+            commandPrompt.insertBefore(list,line);
+           
+        }
+        if (cmdInput === './bossBattle.sh')
         {
             window.location.href = '/ramjiJarmi/souls/combat.html';
         }
