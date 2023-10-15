@@ -1,21 +1,10 @@
 let lineCounter = 1;
-function validCommand(input)
-{
-    rooms = [{"name": "room1", "items": "Dungeon Jail Cell Key"}]
-    input = input.split('')
-    const validCommands = ["cd","ls","clear"]
-    if (input[0].includes(validCommands))
-    {
-        if(input[0] === 'ls')
-        {
-            console.log("hello")
-        }
-    }
-    else
-    {
-        
-    }
+var Player = {
+    name: "Test Player",
+    strength: 1,
+    vitality: 2
 }
+
 function newInputLine()
 {
     lineCounter++;
@@ -23,6 +12,7 @@ function newInputLine()
     const cmd = document.getElementById("commandPrompt");
     //Creating a new input line
     const newInputLine = document.createElement("div");
+    newInputLine.setAttribute("id",`inputLine${lineCounter}`);
     newInputLine.classList.add("inputLine");
 
     //Adds properties to the label TheChosenUndead~
@@ -60,6 +50,13 @@ window.addEventListener("keypress", function (keyPressed) {
     {
         newInputLine();
         const cmdInput = document.getElementById(`userInput${lineCounter-1}`).value;
-        validCommand(cmdInput);
+        var commandPrompt = document.getElementById(`inputLine${lineCounter}`);
+        if (cmdInput === 'ls')
+        {
+            const list = document.createElement("div");
+            const output = document.createTextNode(Player.name);
+            list.appendChild(output);
+            commandPrompt.appendChild(list);
+        }
     }
 })
