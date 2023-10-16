@@ -2,7 +2,7 @@
 
 
 <head>
-    <link rel="stylesheet" type="text/css" href="game.css">
+    <link rel="stylesheet" type="text/css" href="/ramjiJarmi/souls/css/combat.css">
 </head>
 <style>
     .dashed-divider {
@@ -26,22 +26,45 @@
             height: 20px;
             background-color: green;
         }
+    .button {
+        position:relative;
+        background-color: transparent;
+        border: none;
+        color: white;
+        text-align: center;
+        font-family: "Garamond", Times, serif;
+        font-size: 24px;
+    }
+    .button:hover{
+        width: 100px;
+        background-color: #460000;
+    }
+    #timer
+    {
+        font-family: "Garamond", Times, serif;
+        color: white;
+    }
 </style>
 <!-- add style.css sheet later -->
 <body>
     <div class="container">
-        <img src="/ramjiJarmi/souls/images/boss.png" width="800px" height="500px">
+        <img src="/ramjiJarmi/souls/images/boss.png" id="bossImg" width="800px" height="500px">
     </div>
-    <!-- <div>
-        <img src="/ramjiJarmi/souls/images/estus.gif" id="estusMan" width="30px" height="50px">
-    </div> -->
     <div class="dashed-divider"></div>
     <div id="commandPrompt">
-        <div id="cmd" class="inputLine">
-            <label for="userInput1" id="label" >TheChosenUndead~ </label>
-            <input class="commandInput" id="userInput1" type="text">
+        <div id="healthbar">
+            <div id="currentHealth" style="width:100%"></div>
         </div>
-        <script src="/ramjiJarmi/souls/js/cmd.js"></script>
+        
+        <div id="timer">Time remaining: 30 seconds</div>
+        
+        <div id="buttons">
+            <button type="button" class="button" onclick="attack1()">Attack1</button>
+            <button type="button" class="button" onclick="attack2()">Attack2</button>
+            <button type="button" class="button" onclick="attack3()">Attack3</button>
+        </div>
+        
+        <script src="/ramjiJarmi/souls/js/combat.js"></script>
     <div>
 </body>
 

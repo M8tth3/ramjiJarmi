@@ -1,6 +1,6 @@
 body {
     background-color: black;
-    /* overflow-x: hidden; */
+    animation: fadeIn 3s;
 }
 label {
     text-align: left;
@@ -9,17 +9,23 @@ label {
     margin-left:2px;
 }
 .dashed-divider {
+    position:relative;
     border: 3px dashed #fff;
-    margin: auto;
+    margin-top: 10px;
     width: 100%;
 }
 .container{
     width: 100%;
     height: 65%;    
 }
+.estusMan{
+    position:absolute;
+    bottom:260px;
+    left:390px;
+}
 #commandPrompt{
     width: 100%;
-    position:relative;
+    position:sticky;
     padding-top: 10px;
     background-color: #000;
     color: #fff;
@@ -64,4 +70,12 @@ label {
 {
     padding-left: 20px;
     font-size: 17px;
+}
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
