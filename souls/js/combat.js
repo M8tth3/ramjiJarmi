@@ -10,10 +10,11 @@ function updateHealth() {
 function attack1() {
     let damage = 50;
     bossHealth -= damage;
-    if (bossHealth < 0) bossHealth = 0;
+    // if (bossHealth < 0) bossHealth = 0;
     updateHealth();
-    document.getElementById('attack1Message').textContent = 'You did ' + damage + ' damage! Boss health is now ' + bossHealth;
+    // document.getElementById('attack1Message').textContent = 'You did ' + damage + ' damage! Boss health is now ' + bossHealth;
     checkWinCondition();
+    console.log(bossHealth);
 }
 
 function attack2() {
