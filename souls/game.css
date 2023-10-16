@@ -1,5 +1,6 @@
 body {
     background-color: black;
+    animation: fadeIn 3s;
     /* overflow-x: hidden; */
 }
 label {
@@ -64,4 +65,12 @@ label {
 {
     padding-left: 20px;
     font-size: 17px;
+}
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

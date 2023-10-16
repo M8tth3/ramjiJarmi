@@ -11,3 +11,7 @@ body {
     margin: auto;
     width: 100%;
 }
+#commandPrompt{
+    padding-top: 10px;
+    text-align: center;
+}

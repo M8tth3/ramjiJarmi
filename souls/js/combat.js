@@ -39,6 +39,8 @@
             clearInterval(timerInterval);
             alert("You defeated the boss!");
             document.getElementById('buttons').style.display = 'none'; 
+            //Switch to upgrade screen
+            window.href = "/ramjiJarmi/souls/upgrade.html";
         }
     }
 
