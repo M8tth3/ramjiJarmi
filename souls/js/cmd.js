@@ -2,8 +2,16 @@ let lineCounter = 1;
 
 var testPlayer = {
     name: 'testPlayer',
+    class: 'knight',
     strength: 5,
     vitality: 3
+}
+
+var jason = {
+    name: 'jason',
+    class: 'warrior',
+    strength: 5,
+    vitality: 4
 }
 /**
  * The function "newInputLine" creates a new input line with a label and input field, disables the
@@ -79,6 +87,10 @@ output to the command prompt if the user input matches a specific command. */
             list.appendChild(document.createElement("br"));
             list.appendChild(rooms);
             commandPrompt.insertBefore(list,line);
+        }
+        if (cmdInput === 'cd boss_room')
+        {
+            window.location.href = '/ramjiJarmi/souls/combat.html';
         }
     }
 })
