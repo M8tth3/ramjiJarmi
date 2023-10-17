@@ -75,3 +75,24 @@ const timerInterval = setInterval(function() {
 window.onload = function() {
     updateTimerDisplay();
 }
+
+//boss defeat and item drop
+function defeatBoss() {
+    if (bossHealth <= 0) {
+        dropItem();
+    }
+}
+
+function dropItem() {
+    // Create an item element and set properties
+    var item = document.createElement("img");
+    item.setAttribute("src", "/ramjiJarmi/souls/images/bananaitem.png");
+    //item.alt = "Dropped Item";
+    //item.style.width = "100px";
+    //item.style.height = "100px";
+
+    // Append the item to the document
+    document.getElementById('commandPrompt').appendChild(item);
+
+    //add item to the player's inventory here:
+}
