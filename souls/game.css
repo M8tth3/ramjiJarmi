@@ -1,6 +1,7 @@
 body {
     background-color: black;
     animation: fadeIn 3s;
+    overflow-x: hidden;
 }
 label {
     text-align: left;
