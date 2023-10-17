@@ -18,3 +18,15 @@ body {
 #bossImg{
     filter: none;
 }
+.button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    text-align: center;
+    font-family: "Garamond", Times, serif;
+    font-size: 24px;
+}
+.button:hover{
+    width: 325px;
+    background-color: #460000;
+}
