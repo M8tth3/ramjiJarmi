@@ -57,10 +57,18 @@ const timerInterval = setInterval(function() {
         clearInterval(timerInterval);
         const bossImage = document.getElementById("bossImg");
         bossImage.style.filter = "grayscale(100%)";
-        alert("Time's up! You failed to defeat the boss.");
-        
+        died = document.getElementById("died");
+        died.style.display = "block";
+        container = document.getElementById("youDied");
         document.getElementById('buttons').style.display = 'none';
+        tryAgain = document.createElement("button");
+        tryAgain.classList.add("button");
+        tryAgain.innerText = "Try again"
+        tryAgain.setAttribute("onclick","window.location.href='/ramjiJarmi/souls/game.html'");
+        container.append(tryAgain);
+        // window.location.href = "/ramjiJarmi/souls/game.html";
     }
+
 }, 1000);
 
 // Initialization

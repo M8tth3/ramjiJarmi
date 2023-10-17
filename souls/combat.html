@@ -44,6 +44,22 @@
         font-family: "Garamond", Times, serif;
         color: white;
     }
+    #died
+    {
+        font-family: "Garamond",Times,serif;
+        color: #460000;
+        font-size:30px;
+        display: none;
+        animation: fadeIn 3s;
+    }
+    @keyframes fadeIn{
+        from{
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
 </style>
 <!-- add style.css sheet later -->
 <body>
@@ -63,7 +79,9 @@
             <button type="button" class="button" onclick="attack2()">Attack2</button>
             <button type="button" class="button" onclick="attack3()">Attack3</button>
         </div>
-        
+        <div id="youDied">
+            <h2 id="died">YOU DIED</h2>
+        </div>
         <script src="/ramjiJarmi/souls/js/combat.js"></script>
     <div>
 </body>
