@@ -83,7 +83,7 @@ output to the command prompt if the user input matches a specific command. */
             list.appendChild(document.createTextNode("**Stats**"))
             list.appendChild(document.createElement("br"));
             list.appendChild(output);
-            list.appendChild(lineBreak);
+            list.appendChild(document.createElement("br"));
             list.appendChild(document.createTextNode("**Rooms**"))
             list.appendChild(document.createElement("br"));
             list.appendChild(rooms);
