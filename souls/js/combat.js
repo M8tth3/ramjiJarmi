@@ -41,7 +41,7 @@ function checkWinCondition() {
         alert("You defeated the boss!");
         document.getElementById('buttons').style.display = 'none'; 
         //Switch to upgrade screen
-        // window.location.href = "/ramjiJarmi/souls/upgrade.html";
+        window.location.href = "/ramjiJarmi/souls/upgrade.html";
     }
 }
 

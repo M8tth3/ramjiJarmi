@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upgrade Stats</title>
+    <style>
+        body {
+            font-family: "Garamond", Times, serif;
+            background-color: black;
+            color: white;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .menu {
+            background-color: #111;
+            border: 1px solid #444;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .attribute {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        .attribute label {
+            width: 100px;
+        }
+        .attribute input {
+            width: 50px;
+        }
+        button {
+            background-color: #460000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            text-align: center;
+            font-family: "Garamond", Times, serif;
+            font-size: 24px;
+        }
+        button:hover {
+            background-color: #520000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <h2>Upgrade Menu</h2>
+            <div class="attribute">
+                <label>Strength:</label>
+                <input type="number" id="strength" value="5">
+            </div>
+            <div class="attribute">
+                <label>Agility:</label>
+                <input type="number" id="agility" value="5">
+            </div>
+            <button id="upgradeButton" onclick="window.location.href='/ramjiJarmi/souls/game.html'">Upgrade</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('upgradeButton').addEventListener('click', function() {
+            const strength = parseInt(document.getElementById('strength').value);
+            const agility = parseInt(document.getElementById('agility').value);
+
+            // Implement your upgrade logic here.
+            // You can adjust these values based on the player's choices.
+            // For example, you might deduct in-game currency and increase the attribute values.
+
+            // For simplicity, we'll just show an alert.
+            alert(`Strength: ${strength + 1}\nAgility: ${agility + 1}`);
+        });
+    </script>
+</body>
+</html>
