@@ -52,6 +52,10 @@
         display: none;
         animation: fadeIn 3s;
     }
+    #charImg
+    {
+        border: 5px white;
+    }
     @keyframes fadeIn{
         from{
             opacity: 0;
@@ -62,23 +66,24 @@
     }
 </style>
 <!-- add style.css sheet later -->
+
 <body>
+    <div id="chat">
+
+    </div>
     <div class="container">
         <img src="/ramjiJarmi/souls/images/boss.png" id="bossImg" width="800px" height="500px">
     </div>
     <div class="dashed-divider"></div>
     <div id="commandPrompt">
-        <div id="healthbar">
-            <div id="currentHealth" style="width:100%"></div>
-        </div>
         
-        <div id="timer">Time remaining: 30 seconds</div>
-        
-        <div id="buttons">
-            <button type="button" class="button" onclick="attack1()">Attack1</button>
-            <button type="button" class="button" onclick="attack2()">Attack2</button>
-            <button type="button" class="button" onclick="attack3()">Attack3</button>
+        <div id="charImg">
+            <img src="/ramjiJarmi/souls/images/rayanne.png" id="charImg" width="200px" height="200px">
         </div>
+        <div id="stats">
+            
+        </div>
+    
         <div id="youDied">
             <h2 id="died">YOU DIED</h2>
         </div>
