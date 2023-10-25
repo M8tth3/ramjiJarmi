@@ -6,34 +6,6 @@ function updateHealth() {
     healthBar.style.width = (bossHealth / 10) + '%';
 }
 
-function attack1() {
-    let damage = 50;
-    bossHealth -= damage;
-    // if (bossHealth < 0) bossHealth = 0;
-    updateHealth();
-    // document.getElementById('attack1Message').textContent = 'You did ' + damage + ' damage! Boss health is now ' + bossHealth;
-    checkWinCondition();
-    console.log(bossHealth);
-}
-
-function checkWinCondition() {
-    if (bossHealth <= 0) {
-        clearInterval(timerInterval);
-        alert("You defeated the boss!");
-        document.getElementById('buttons').style.display = 'none'; 
-        //Switch to upgrade screen
-        window.location.href = "/ramjiJarmi/souls/upgrade.html";
-    }
-}
-
-function updatePlayerHealth(playerHealth)
-{
-    currentHealth = playerHealth
-    const healthBar = document.getElementById('stats');
-    const remainingHealth = "#".repeat(currentHealth) + ".".repeat(playerHealth-currentHealth);
-    healthBar.textContent = "HP: [" + remainingHealth + "]";
-}
-
 function damageCalc(){
     return 70;
 }
@@ -102,11 +74,10 @@ function bossAttack()
     console.log(bossAttack);
     newChatMessage('> Boss~ ', `did ${bossAttack} damage`)
 }
-nums = 0;
+
 window.addEventListener("keypress", function (keyPressed) {
     if(keyPressed.key === 'f')
     {
-        nums +=1;
         newChatMessage('> ChosenUndead~ ', ' inflicted 70 damage');  
         bossImg.classList.add('bossDamage');
 
@@ -116,10 +87,6 @@ window.addEventListener("keypress", function (keyPressed) {
         setTimeout(() => {
             bossAttack();
         },2000);
-        if (nums === 10)
-    {
-        window.location.href = "/ramjiJarmi/souls/upgrade.html";
-    }
     }})
 
 updatePlayerHealth(100);
