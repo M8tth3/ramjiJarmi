@@ -1,5 +1,4 @@
 
-let bossHealth = 1000;
 let timeRemaining = 30;
 const bossAttacks = {'big swing':50, 'fast swing':30, 'sit on you':100};
 function updateHealth() {
@@ -103,9 +102,11 @@ function bossAttack()
     console.log(bossAttack);
     newChatMessage('> Boss~ ', `did ${bossAttack} damage`)
 }
+nums = 0;
 window.addEventListener("keypress", function (keyPressed) {
     if(keyPressed.key === 'f')
     {
+        nums +=1;
         newChatMessage('> ChosenUndead~ ', ' inflicted 70 damage');  
         bossImg.classList.add('bossDamage');
 
@@ -115,6 +116,10 @@ window.addEventListener("keypress", function (keyPressed) {
         setTimeout(() => {
             bossAttack();
         },2000);
+        if (nums === 10)
+    {
+        window.location.href = "/ramjiJarmi/souls/upgrade.html";
+    }
     }})
 
 updatePlayerHealth(100);

@@ -72,11 +72,11 @@
         <label for="class">Class:</label>
         <select id="class" name="class">
             <option value="knight">Knight</option>
-            <option value="thief">Thief</option>
-            <option value="sorcerer">Sorcerer</option>
-            <option value="pyromancer">Pyromancer</option>
-            <option value="cleric">Cleric</option>
+            <option value="god">God</option>
+            <option value="hunter">Hunter</option>
             <option value="wanderer">Wanderer</option>
+            <option value="bandit">bandit</option>
+            <option value="cleric">Cleric</option>
         </select>
 
         <label for="age">Age:</label>
@@ -107,6 +107,47 @@
             <button type="submit" onclick="window.location.href='/ramjiJarmi/souls/game.html'">CONFIRM</button>
             <button type="button">CANCEL</button>
         </div>
+        <div id="result">
+            <!-- The data will be displayed here -->
+        </div>
     </div>
 </body>
 </html>
+
+<script>
+    // Get a reference to the select element
+    const selectElement = document.getElementById("class");
+    
+    // Get a reference to the result div
+    const resultDiv = document.getElementById("result");
+
+    // Add an event listener to the select element
+    selectElement.addEventListener("change", function() {
+        // Get the selected value
+        const selectedClass = selectElement.value;
+
+        // Make an API request based on the selected value
+        fetch(`https://ramjijarmi.duckdns.org/soulsList`)
+            .then(response => response.json())
+            .then(data => {
+                // Find the corresponding data in the response
+                const selectedData = data.find(item => item.class_name.toLowerCase() === selectedClass);
+
+                // Display the data in the result div
+                if (selectedData) {
+                    resultDiv.innerHTML = `
+                        <h2>${selectedData.class_name}</h2>
+                        <p>Health: ${selectedData.health}</p>
+                        <p>Attack: ${selectedData.attack}</p>
+                        <p>Resistance: ${selectedData.resistance}</p>
+                        <p>Power: ${selectedData.power}</p>
+                    `;
+                } else {
+                    resultDiv.innerHTML = "Class not found.";
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching data:", error);
+            });
+    });
+</script>

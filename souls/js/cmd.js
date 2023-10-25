@@ -91,18 +91,32 @@ output to the command prompt if the user input matches a specific command. */
             list.appendChild(document.createTextNode("engage_in_jollyCoop.sh"));
             commandPrompt.insertBefore(list,line);
         }
-        if (cmdInput === './engage_in_jollyCoop.sh')
-        {
+        if (cmdInput === './engage_in_jollyCoop.sh') {
             const lineBreak = document.createElement("br");
             const cop = document.createElement("div");
             cop.classList.add("output");
             cop.appendChild(document.createTextNode("Who would you like to engage in jolly cooperation with?:"));
             cop.appendChild(lineBreak);
-            //get users from database
-            jasonText = Object.entries(jason).map(([key, value]) => `${key}: ${value}`).join(" ");
-            cop.appendChild(document.createTextNode(jasonText));
-            commandPrompt.insertBefore(cop,line);
+        
+            // Fetch JSON data from the specified DuckDNS link
+            fetch('https://ramjijarmi.duckdns.org/soulsList')
+                .then(response => response.json())
+                .then(data => {
+                    // Iterate through the data and create options for each class
+                    data.forEach(item => {
+                        const option = document.createElement("option");
+                        option.value = item.class_name.toLowerCase();
+                        option.textContent = item.class_name;
+                        cop.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error("Error fetching data:", error);
+                });
+        
+            commandPrompt.insertBefore(cop, line);
         }
+        
         if (cmdInput === 'cd boss_room')
         {
             const list = document.createElement("div");
