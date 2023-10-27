@@ -67,6 +67,7 @@ nums = 0;
 window.addEventListener("keypress", function (keyPressed) {
     if(keyPressed.key === 'f')
     {
+        nums += 1;
         newChatMessage('> ChosenUndead~ ', ' inflicted 70 damage');  
         bossImg.classList.add('bossDamage');
         flashHPBar();
@@ -77,7 +78,8 @@ window.addEventListener("keypress", function (keyPressed) {
         setTimeout(() => {
             bossAttack();
         },2000);
-        if (nums === 10)
+
+    if (nums === 10)
     {
         window.location.href = "/ramjiJarmi/souls/itemDrop.html"
     }
