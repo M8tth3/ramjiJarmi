@@ -1,3 +1,10 @@
+let timeRemaining = 30;
+const bossAttacks = {'big swing':50, 'fast swing':30, 'sit on you':100};
+function updateHealth() {
+    const healthBar = document.getElementById('currentHealth');
+    healthBar.style.width = (bossHealth / 10) + '%';
+}
+
 function damageCalc(){
     return 70;
 }
@@ -56,10 +63,10 @@ function flashHPBar() {
 }
 
 nums = 0;
+
 window.addEventListener("keypress", function (keyPressed) {
     if(keyPressed.key === 'f')
     {
-        nums +=1;
         newChatMessage('> ChosenUndead~ ', ' inflicted 70 damage');  
         bossImg.classList.add('bossDamage');
         flashHPBar();
