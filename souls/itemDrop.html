@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Boss Dropped an Item!</title>
+    <style>
+        body {
+            font-family: "Garamond", Times, serif;
+            background-color: black;
+            color: white;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .menu {
+            background-color: #111;
+            border: 1px solid #444;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #460000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            text-align: center;
+            font-family: "Garamond", Times, serif;
+            font-size: 24px;
+        }
+        button:hover {
+            background-color: #520000;
+        }
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <div id="itemDrop">
+                <h2>The boss dropped an item!</h2>
+                <img src="/ramjiJarmi/souls/images/bananaitem.png" alt="Dropped Item" width="400px" height="250px">
+            </div>
+            <button id="itemButton" onclick="window.location.href='/ramjiJarmi/souls/upgrade.html'">Add to inventory!</button>
+        </div>
+    </div>
+
+
+    <script>
+        document.getElementById('itemButton').addEventListener('click', function() {
+            alert(`The item has been added to your inventory!`);
+        });
+    </script>
+</body>
+</html>

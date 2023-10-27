@@ -12,38 +12,6 @@
     .container{
         margin-left: 25%;
     }
-    .bossHP{
-        position: absolute;
-        top: 50px;
-    }
-    #healthbar {
-            width: 100%;
-            height: 20px;
-            background-color: red;
-        }
-
-        #currentHealth {
-            height: 20px;
-            background-color: green;
-        }
-    .button {
-        position:relative;
-        background-color: transparent;
-        border: none;
-        color: white;
-        text-align: center;
-        font-family: "Garamond", Times, serif;
-        font-size: 24px;
-    }
-    .button:hover{
-        width: 100px;
-        background-color: #460000;
-    }
-    #timer
-    {
-        font-family: "Garamond", Times, serif;
-        color: white;
-    }
     #died
     {
         font-family: "Garamond",Times,serif;
@@ -64,12 +32,40 @@
             opacity: 1;
         }
     }
+    #hpBar {
+        width: 200px; /* Adjust the width as needed */
+        height: 20px; /* Adjust the height as needed */
+        background-color: #333; /* Background color of the HP bar */
+        border: 2px solid #000;
+    }
+
+    #hpFill {
+        width: 100%; /* Initially, the HP bar is fully filled */
+        height: 100%;
+        background-color: #00FF00; /* Green color for HP */
+    }
+    
+    #hpFill.flash {
+        animation: flash 0.5s infinite alternate; /* Flash animation for HP fill */
+    }
+
+    @keyframes flash {
+        from {
+            background-color: #00FF00;
+        }
+        to {
+            background-color: #FF0000; /* Red color when flashing */
+        }
+    }
 </style>
 <!-- add style.css sheet later -->
 
 <body>
     <div id="chat">
 
+    </div>
+    <div id="hpBar">
+        <div id="hpFill"></div>
     </div>
     <div class="container">
         <img src="/ramjiJarmi/souls/images/boss.png" id="bossImg" width="800px" height="500px">
