@@ -75,10 +75,10 @@ window.addEventListener("keypress", function (keyPressed) {
             const rooms = document.createTextNode("boss_room");
             const lineBreak = document.createElement("br");
 
-            list.appendChild(document.createTextNode("**Stats**"))
-            list.appendChild(document.createElement("br"));
-            list.appendChild(output);
-            list.appendChild(document.createElement("br"));
+            // list.appendChild(document.createTextNode("**Stats**"))
+            // list.appendChild(document.createElement("br"));
+            // list.appendChild(output);
+            // list.appendChild(document.createElement("br"));
             list.appendChild(document.createTextNode("**Rooms**"))
             list.appendChild(document.createElement("br"));
             list.appendChild(rooms);
@@ -109,7 +109,7 @@ window.addEventListener("keypress", function (keyPressed) {
                     data.forEach(item => {
                         const option = document.createElement("option");
                         option.value = item.class_name.toLowerCase();
-                        option.textContent = `Numero ${i} | ${item.name} - ${item.class_name} | HP: ${item.health} | Resistance: ${item.resistance} | Power: ${item.power} | Total Level: ${item.totalStats}`;
+                        option.textContent = `Numero ${i} | ${item.name} - ${item.class_name} | Attack: ${item.attack} | HP: ${item.health} | Resistance: ${item.resistance} | Power: ${item.power} | Total Level: ${item.totalStats}`;
                         cop.appendChild(option);
                         i++;
                     });

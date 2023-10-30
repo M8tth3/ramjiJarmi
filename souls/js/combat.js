@@ -85,7 +85,7 @@ let canPress = true;
 window.addEventListener("keypress", function (keyPressed) {
     if(keyPressed.key === 'f' && canPress === true)
     {
-        var playerDamage = atk*power*(Math.floor(Math.random()*(0.14-0.1)) + 0.1);
+        var playerDamage = Math.round(atk*power*(Math.floor(Math.random()*(0.14-0.1)) + 0.1));
         newChatMessage('> ChosenUndead~ ', ` inflicted ${playerDamage} damage`);  
         bossImg.classList.add('bossDamage');
         bossHealth -= playerDamage;
@@ -126,8 +126,8 @@ setTimeout(() => {
 function updateUIStats(){
     const statsDiv = document.getElementById('stats');
     const statsHTML = `
-        <p>Attack: ${atk}</p>
         <p>Health: ${currentHealth}</p>
+        <p>Attack: ${atk}</p>
         <p>Resistance: ${res}</p>
         <p>Power: ${power}</p>
     `;

@@ -8,11 +8,11 @@ body {
     left:0;
     padding:5px;
     padding-left: 20px;
-    
 }
 #characterImg{
     border: 3px solid white;
 }
+
 #deathMessage{
     font-family:"Garamond", Times, serif;
     font-size: 30px;
@@ -70,6 +70,7 @@ body {
     position: relative;
     padding: 10px;
     left: 0;
+    font-size: 18px;
 }
 @keyframes slideTop{
     from{margin-top: -100%;}
