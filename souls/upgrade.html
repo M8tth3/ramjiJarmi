@@ -77,6 +77,7 @@
     <script>
         const playerData = JSON.parse(localStorage.getItem('playerData'));
         const playerID = JSON.parse(localStorage.getItem('userID'));
+        console.log(playerID);
         const attributesDiv = document.getElementById('attributes');
         const upgradeButton = document.getElementById('upgradeButton');
         const confirmButton = document.getElementById('confirmButton');
@@ -144,10 +145,8 @@
             
             const requestMethod = {
                 method: 'PUT',
-                mode: 'cors',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': 'localhost:8080'
                 },
                 body: JSON.stringify(upgradeData)
             }
