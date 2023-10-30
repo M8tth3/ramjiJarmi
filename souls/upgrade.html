@@ -57,30 +57,94 @@
 <body>
     <div class="container">
         <div class="menu">
-            <h2>Upgrade Menu</h2>
-            <div class="attribute">
-                <label>Strength:</label>
-                <input type="number" id="strength" value="5">
+            <div id="attributes">
+                <!-- Attribute inputs will be dynamically added here -->
             </div>
-            <div class="attribute">
-                <label>Agility:</label>
-                <input type="number" id="agility" value="5">
-            </div>
-            <button id="upgradeButton" onclick="window.location.href='/ramjiJarmi/souls/game.html'">Upgrade</button>
+            <button id="upgradeButton">Upgrade</button>
+            <button id="confirmButton" style="display: none;">Confirm</button>
         </div>
     </div>
 
     <script>
-        document.getElementById('upgradeButton').addEventListener('click', function() {
-            const strength = parseInt(document.getElementById('strength').value);
-            const agility = parseInt(document.getElementById('agility').value);
+        const playerData = JSON.parse(localStorage.getItem('playerData'));
 
-            // Implement your upgrade logic here.
-            // You can adjust these values based on the player's choices.
-            // For example, you might deduct in-game currency and increase the attribute values.
+        const attributesDiv = document.getElementById('attributes');
+        const upgradeButton = document.getElementById('upgradeButton');
+        const confirmButton = document.getElementById('confirmButton');
 
-            // For simplicity, we'll just show an alert.
-            alert(`Strength: ${strength + 1}\nAgility: ${agility + 1}`);
+        if (playerData) {
+            for (const attribute in playerData) {
+                if (!['name', 'gender', 'age', 'class_name'].includes(attribute)) {
+                    const attributeInput = document.createElement('div');
+                    attributeInput.classList.add('attribute');
+                    attributeInput.innerHTML = `
+                        <label>${attribute}</label>
+                        <input id="${attribute}" type="number" value="${playerData[attribute]}" min="${playerData[attribute]}" max="${playerData[attribute] + 5}">
+                    `;
+                    attributesDiv.appendChild(attributeInput);
+                }
+            }
+        }
+
+        let totalUpgrades = 0;
+
+        upgradeButton.addEventListener('click', function() {
+            const attributeInputs = attributesDiv.querySelectorAll('input');
+            let total = 0;
+            attributeInputs.forEach(input => {
+                total += parseInt(input.value);
+            });
+
+            if (total < 5) {
+                attributeInputs.forEach(input => {
+                    input.removeAttribute('disabled');
+                });
+            } else {
+                attributeInputs.forEach(input => {
+                    input.setAttribute('disabled', 'true');
+                });
+                upgradeButton.style.display = 'none';
+                confirmButton.style.display = 'block';
+            }
+        });
+    
+        confirmButton.addEventListener('click', function() {
+            const upgradedData = {};
+            const attributeInputs = attributesDiv.querySelectorAll('input');
+            attributeInputs.forEach(input => {
+                upgradedData[input.id] = parseInt(input.value);
+            });
+            console.log(upgradedData);
+            alert(JSON.stringify(upgradedData));
+            window.location.href = "/ramjiJarmi/souls/game.html";
+            // Here you could save the upgraded data back to localStorage or send it to the server.
+            const soulsCharEndpoint = `https://ramjijarmi.stu.nighthawkcodingsociety.com/soulsCharacter`;
+
+            const requestMethod = {
+                method: 'PUT',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // 'Access-Control-Allow-Origin': '*'
+                },
+                body: JSON.stringify(upgradedData)
+            }
+        
+            fetch(soulsCharEndpoint, requestMethod)
+                .then(response => {
+                    if(!response.ok){
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('POST request successful:', data);
+                    
+                })
+                .catch(error => {
+                    console.error('Problem with post request:', error);
+                });
+                
         });
     </script>
 </body>

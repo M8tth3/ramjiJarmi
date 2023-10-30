@@ -62,15 +62,10 @@ window.addEventListener("keypress", function (keyPressed) {
     if(keyPressed.key === 'Enter')
     {
         newInputLine();
-/* The commented code block is checking if the user input in the previous input line is equal to 'ls'.
-If it is, it creates a new `<div>` element called `list`, creates a text node with the value of
-`Player.name`, appends the text node to the `list` element, and inserts the `list` element before
-the current input line in the `commandPrompt` container. Essentially, it is adding a new line of
-output to the command prompt if the user input matches a specific command. */
+
         const cmdInput = document.getElementById(`userInput${lineCounter-1}`).value;
         var commandPrompt = document.getElementById(`inputLine${lineCounter}`);
         var line = document.getElementById(`label${lineCounter}`);
-        let jasonText;
         if (cmdInput === 'ls')
         {
             const list = document.createElement("div");
@@ -88,26 +83,35 @@ output to the command prompt if the user input matches a specific command. */
             list.appendChild(document.createElement("br"));
             list.appendChild(rooms);
             list.append(lineBreak);
-            list.appendChild(document.createTextNode("engage_in_jollyCoop.sh"));
+            list.appendChild(document.createTextNode("leaderBoard.sh"));
             commandPrompt.insertBefore(list,line);
         }
-        if (cmdInput === './engage_in_jollyCoop.sh') {
+        if (cmdInput === './leaderBoard.sh') {
             const lineBreak = document.createElement("br");
             const cop = document.createElement("div");
             cop.classList.add("output");
             cop.appendChild(document.createTextNode("Who would you like to engage in jolly cooperation with?:"));
             cop.appendChild(lineBreak);
         
-            // Fetch JSON data from the specified DuckDNS link
-            fetch('https://ramjijarmi.duckdns.org/soulsList')
+            // Fetch JSON data from the specified link
+            fetch('https://ramjijarmi.stu.nighthawkcodingsociety.com/soulsCharacterList')
                 .then(response => response.json())
                 .then(data => {
-                    // Iterate through the data and create options for each class
+                    // Calculate a cumulative score for each character based on their stats
+                    data.forEach(item => {
+                        item.totalStats = item.health + item.attack + item.resistance + item.power;
+                    });
+        
+                    // Sort the data based on the totalStats
+                    data.sort((a, b) => b.totalStats - a.totalStats);
+                    let i = 1;
+                    // Iterate through the sorted data and create options for each character
                     data.forEach(item => {
                         const option = document.createElement("option");
                         option.value = item.class_name.toLowerCase();
-                        option.textContent = item.class_name;
+                        option.textContent = `Numero ${i} | ${item.name} - ${item.class_name} | HP: ${item.health} | Resistance: ${item.resistance} | Power: ${item.power} | Total Level: ${item.totalStats}`;
                         cop.appendChild(option);
+                        i++;
                     });
                 })
                 .catch(error => {
@@ -116,7 +120,8 @@ output to the command prompt if the user input matches a specific command. */
         
             commandPrompt.insertBefore(cop, line);
         }
-        
+    
+            
         if (cmdInput === 'cd boss_room')
         {
             const list = document.createElement("div");
@@ -124,7 +129,6 @@ output to the command prompt if the user input matches a specific command. */
             list.appendChild(document.createTextNode("bossBattle.sh"));
             
             commandPrompt.insertBefore(list,line);
-           
         }
         if (cmdInput === './bossBattle.sh')
         {

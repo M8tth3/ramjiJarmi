@@ -30,6 +30,7 @@ label {
     padding-top: 10px;
     background-color: #000;
     color: #fff;
+    padding-left:22px;
 }
 .commandInput{
     width: 80%;

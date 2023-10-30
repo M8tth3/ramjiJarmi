@@ -51,7 +51,7 @@ function checkStats()
     const sex = document.getElementById("sex").value;
     const age = document.getElementById("age").value;
     
-    const soulsCharEndpoint = `https://ramjijarmi.stu.nighthawkcodingsociety.com/soulsCharacterList`;
+    const soulsCharEndpoint = `https://ramjijarmi.stu.nighthawkcodingsociety.com/soulsCharacter`;
     charData = {
         name: name,
         gender: sex,
@@ -64,8 +64,10 @@ function checkStats()
     };
     const requestMethod = {
         method: 'POST',
+        mode: 'cors',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            // 'Access-Control-Allow-Origin': '*'
         },
         body: JSON.stringify(charData)
     }
@@ -79,8 +81,11 @@ function checkStats()
         })
         .then(data => {
             console.log('POST request successful:', data);
+            window.location.href = "/ramjiJarmi/souls/game.html";
+            localStorage.setItem('playerData', JSON.stringify(charData));
         })
         .catch(error => {
             console.error('Problem with post request:', error);
         });
+        
 }
