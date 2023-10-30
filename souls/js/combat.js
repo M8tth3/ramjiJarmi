@@ -6,15 +6,22 @@ const health = playerData.health;
 const res = playerData.resistance;
 const power = playerData.power;
 let currentHealth = health;
-
+//Selection of Bosses
+const bosses = ['/ramjiJarmi/souls/images/lion.png','/ramjiJarmi/souls/images/golem.png','/ramjiJarmi/souls/images/boss.png']
+const bossIndex = Math.floor(Math.random()*bosses.length);
+const theBoss = bosses[bossIndex]
 //Boss Stats
-const bossAttacks = {'BIG SWING':120, 'FAST SWING':125, 'CLUB SMASH':145};
+const bossAttacks = {'BIG SWING':120, 'FAST SWING':125, 'SMASH':145};
 var bossHealth = 500;
 //
 var numChat = 0;
 var tracker = 0;
 
 updateUIStats();
+//Pick random boss Image
+theBossImage = document.getElementById('bossImg');
+theBossImage.setAttribute("src",`${theBoss}`)
+
 function newChatMessage(attacker, damageMessage)
 {
     
