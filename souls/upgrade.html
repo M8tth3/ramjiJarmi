@@ -7,6 +7,7 @@
             font-family: "Garamond", Times, serif;
             background-color: black;
             color: white;
+            animation: fadeIn 2s;
         }
         .container {
             display: flex;
@@ -52,6 +53,14 @@
         button:hover {
             background-color: #520000;
         }
+        @keyframes fadeIn{
+            from{
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
@@ -67,11 +76,11 @@
 
     <script>
         const playerData = JSON.parse(localStorage.getItem('playerData'));
-
+        const playerID = JSON.parse(localStorage.getItem('userID'));
         const attributesDiv = document.getElementById('attributes');
         const upgradeButton = document.getElementById('upgradeButton');
         const confirmButton = document.getElementById('confirmButton');
-
+        
         if (playerData) {
             for (const attribute in playerData) {
                 if (!['name', 'gender', 'age', 'class_name'].includes(attribute)) {
@@ -109,25 +118,38 @@
         });
     
         confirmButton.addEventListener('click', function() {
-            const upgradedData = {};
+            const upgradedData ={
+
+            }
             const attributeInputs = attributesDiv.querySelectorAll('input');
             attributeInputs.forEach(input => {
                 upgradedData[input.id] = parseInt(input.value);
             });
             console.log(upgradedData);
             alert(JSON.stringify(upgradedData));
-            window.location.href = "/ramjiJarmi/souls/game.html";
+            const upgradeData = {
+                id: playerID,
+                name: playerData.name,
+                gender: playerData.gender,
+                age: playerData.age,
+                class_name: playerData.class_name,
+                health: upgradedData.health,
+                attack: upgradedData.attack,
+                power: upgradedData.power,
+                resistance: upgradedData.resistance 
+            };
+            //window.location.href = "/ramjiJarmi/souls/game.html";
             // Here you could save the upgraded data back to localStorage or send it to the server.
-            const soulsCharEndpoint = `https://ramjijarmi.stu.nighthawkcodingsociety.com/soulsCharacter`;
-
+            const soulsCharEndpoint = `https://ramjijarmi.stu.nighthawkcodingsociety.com/soulsCharacterList`;
+            
             const requestMethod = {
                 method: 'PUT',
                 mode: 'cors',
                 headers: {
                     'Content-Type': 'application/json',
-                    // 'Access-Control-Allow-Origin': '*'
+                    'Access-Control-Allow-Origin': 'localhost:8080'
                 },
-                body: JSON.stringify(upgradedData)
+                body: JSON.stringify(upgradeData)
             }
         
             fetch(soulsCharEndpoint, requestMethod)
@@ -138,11 +160,11 @@
                     return response.json();
                 })
                 .then(data => {
-                    console.log('POST request successful:', data);
+                    console.log('PUT request successful:', data);
                     
                 })
                 .catch(error => {
-                    console.error('Problem with post request:', error);
+                    console.error('Problem with PUT request:', error);
                 });
                 
         });

@@ -80,6 +80,11 @@ function checkStats()
             return response.json();
         })
         .then(data => {
+            //Get the user's id so that it can be referenced later for PUT request
+            const newUserID = data.id;
+            
+            //Put the id in storage
+            localStorage.setItem('userID',newUserID);
             console.log('POST request successful:', data);
             window.location.href = "/ramjiJarmi/souls/game.html";
             localStorage.setItem('playerData', JSON.stringify(charData));

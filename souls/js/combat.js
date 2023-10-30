@@ -1,23 +1,23 @@
-let timeRemaining = 30;
-const bossAttacks = {'big swing':50, 'fast swing':30, 'sit on you':100};
-function updateHealth() {
-    const healthBar = document.getElementById('currentHealth');
-    healthBar.style.width = (bossHealth / 10) + '%';
-}
+//Retrieve the user's stats
+const playerData = JSON.parse(localStorage.getItem('playerData'));
+let playerDamage;
+const atk = playerData.attack;
+const health = playerData.health;
+const res = playerData.resistance;
+const power = playerData.power;
+let currentHealth = health;
 
-function damageCalc(){
-    return 70;
-}
-// Initialization
-window.onload = function() {
-    updateTimerDisplay();
-}
-
+//Boss Stats
+const bossAttacks = {'BIG SWING':120, 'FAST SWING':125, 'CLUB SMASH':145};
+var bossHealth = 500;
+//
 var numChat = 0;
 var tracker = 0;
+
+updateUIStats();
 function newChatMessage(attacker, damageMessage)
 {
-    // const attacker = '> ChosenUndead~ ';
+    
     const message = document.createTextNode(`${attacker} ${damageMessage}`);
     const chat = document.getElementById('chat');
 
@@ -41,6 +41,7 @@ function newChatMessage(attacker, damageMessage)
 const bossImg = document.getElementById('bossImg');
 function bossAttack()
 {
+    const charImg = document.getElementById('charImg');
     //Takes the key names of the dictionary and makes it into a list
     const attackKeys = Object.keys(bossAttacks);
     //Picks a random index number based on the length of the array of key names
@@ -49,41 +50,82 @@ function bossAttack()
     const randomAttackKey = attackKeys[randomIndex];
     //Puts the random key name into bossAttacks to get the damage value :)
     var bossAttack = bossAttacks[randomAttackKey];
-    console.log(bossAttack);
-    newChatMessage('> Boss~ ', `did ${bossAttack} damage`)
-}
-
-// Function to flash the HP bar
-function flashHPBar() {
-    const hpFill = document.getElementById('hpFill');
-    hpFill.classList.add('flash');
+    // console.log(bossAttack);
+    newChatMessage('Boss~ ', `${randomAttackKey} did ${bossAttack-res} damage`)
+    currentHealth -= (bossAttack-res);
+    updateUIStats();
+    //Add filter when player gets attacked
+    charImg.classList.add('bossDamage');
     setTimeout(() => {
-        hpFill.classList.remove('flash');
-    }, 500); // Adjust the duration of the flash as needed
-}
-
-nums = 0;
-
-window.addEventListener("keypress", function (keyPressed) {
-    if(keyPressed.key === 'f')
+        charImg.classList.remove('bossDamage');
+    },200);
+    if (currentHealth <= 0)
     {
-        nums += 1;
-        newChatMessage('> ChosenUndead~ ', ' inflicted 70 damage');  
-        bossImg.classList.add('bossDamage');
-        flashHPBar();
+        charImg.style.filter = "grayscale(100%)";
+        bossImg.style.filter = "grayscale(100%)";
+        newChatMessage("YOU DIED", '');
+        canPress = false;
+        setTimeout(() => {
+            window.location.href = "/ramjiJarmi/souls/game.html";
+        },2000);
+    }
+}
+setTimeout(() => {
+    newChatMessage('> RAAHHHHH', '');
+},1000);
 
+let canPress = true;
+window.addEventListener("keypress", function (keyPressed) {
+    if(keyPressed.key === 'f' && canPress === true)
+    {
+        var playerDamage = atk*power*(Math.floor(Math.random()*(0.14-0.1)) + 0.1);
+        newChatMessage('> ChosenUndead~ ', ` inflicted ${playerDamage} damage`);  
+        bossImg.classList.add('bossDamage');
+        bossHealth -= playerDamage;
+        console.log(bossHealth);
         setTimeout(() => {
             bossImg.classList.remove('bossDamage');
         },300);
-        setTimeout(() => {
-            bossAttack();
-        },2000);
-
-    if (nums === 10)
-    {
-        window.location.href = "/ramjiJarmi/souls/itemDrop.html"
-    }
+        if (bossHealth <= 0)
+        {
+            canPress = false;
+            newChatMessage('Boss~', 'Ahhhhhh');
+            newChatMessage('VICTORY!','');
+            setTimeout(() => {
+                window.location.href="/ramjiJarmi/souls/upgrade.html";
+            },3000);
+        }
     }})
 
-updatePlayerHealth(100);
-//Boss attacks
+//Boss attack at an interval
+function bossAttackInterval(){
+    const minInterval = 1000;
+    const maxInterval = 3000;
+
+    function attackWithRandomInterval(){
+        const randomInterval = Math.floor(Math.random()*(maxInterval-minInterval)) + minInterval;
+        bossAttack();
+        if (currentHealth > 0 && bossHealth > 0){
+            setTimeout(attackWithRandomInterval,randomInterval);
+        }
+    }
+    attackWithRandomInterval();
+}
+setTimeout(() => {
+    bossAttackInterval();
+},2000);
+//UI
+
+function updateUIStats(){
+    const statsDiv = document.getElementById('stats');
+    const statsHTML = `
+        <p>Attack: ${atk}</p>
+        <p>Health: ${currentHealth}</p>
+        <p>Resistance: ${res}</p>
+        <p>Power: ${power}</p>
+    `;
+    statsDiv.innerHTML = statsHTML;
+}
+
+
+

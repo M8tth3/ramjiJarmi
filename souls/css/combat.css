@@ -8,8 +8,17 @@ body {
     left:0;
     padding:5px;
     padding-left: 20px;
+    
 }
-
+#characterImg{
+    border: 3px solid white;
+}
+#deathMessage{
+    font-family:"Garamond", Times, serif;
+    font-size: 30px;
+    color: red;
+    animation: highlightImage 0.5s;
+}
 .container{
     width: 100%;
     height: 65%;    
