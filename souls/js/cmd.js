@@ -1,5 +1,5 @@
 let lineCounter = 1;
-
+var isInBossRoom = false;
 var testPlayer = {
     name: 'testPlayer',
     class: 'knight',
@@ -66,7 +66,7 @@ window.addEventListener("keypress", function (keyPressed) {
         const cmdInput = document.getElementById(`userInput${lineCounter-1}`).value;
         var commandPrompt = document.getElementById(`inputLine${lineCounter}`);
         var line = document.getElementById(`label${lineCounter}`);
-        if (cmdInput === 'ls')
+        if (cmdInput === 'ls' && isInBossRoom === false)
         {
             const list = document.createElement("div");
             list.classList.add("output");
@@ -75,12 +75,18 @@ window.addEventListener("keypress", function (keyPressed) {
             const rooms = document.createTextNode("boss_room");
             const lineBreak = document.createElement("br");
 
-
             list.appendChild(document.createTextNode("**Rooms**"))
             list.appendChild(document.createElement("br"));
             list.appendChild(rooms);
             list.append(lineBreak);
             list.appendChild(document.createTextNode("leaderBoard.sh"));
+            commandPrompt.insertBefore(list,line);
+        }
+        else if (cmdInput === 'ls' && isInBossRoom === true)
+        {
+            const list = document.createElement("div");
+            list.classList.add("output");
+            list.appendChild(document.createTextNode("bossBattle.sh"));
             commandPrompt.insertBefore(list,line);
         }
         if (cmdInput === './leaderBoard.sh') {
@@ -119,15 +125,32 @@ window.addEventListener("keypress", function (keyPressed) {
         
             commandPrompt.insertBefore(cop, line);
         }
-    
+        if (cmdInput === 'cd ..' && isInBossRoom === true)
+        {
+            isInBossRoom = false;
+            const bossExit = document.createElement("div");
+            bossExit.classList.add("output");
+            const rooms = document.createTextNode("You have exited the boss room");
+            const lineBreak = document.createElement("br");
+
+            bossExit.appendChild(rooms);
+            bossExit.append(lineBreak);
+            commandPrompt.insertBefore(bossExit,line);
+        }
             
         if (cmdInput === 'cd boss_room')
         {
-            const list = document.createElement("div");
-            list.classList.add("output");
-            list.appendChild(document.createTextNode("bossBattle.sh"));
+            isInBossRoom = true;
+            const bossMessage = document.createElement("div");
+            bossMessage.classList.add("output");
+            const rooms = document.createTextNode("You have entered the boss room");
+            const lineBreak = document.createElement("br");
+
+            bossMessage.appendChild(rooms);
+            bossMessage.append(lineBreak);
+            commandPrompt.insertBefore(bossMessage,line);
+
             
-            commandPrompt.insertBefore(list,line);
         }
         if (cmdInput === './bossBattle.sh')
         {
