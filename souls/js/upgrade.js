@@ -70,6 +70,8 @@ confirmButton.addEventListener('click', function() {
     //window.location.href = "/ramjiJarmi/souls/game.html";
     // Here you could save the upgraded data back to localStorage or send it to the server.
     const soulsCharEndpoint = `https://ramjijarmi.stu.nighthawkcodingsociety.com/soulsCharacter`;
+    
+    //New upgraded player Data
     charData = {
         name: playerData.name,
         gender: playerData.gender,
@@ -80,8 +82,10 @@ confirmButton.addEventListener('click', function() {
         resistance: upgradedData.resistance,
         power: upgradedData.power
     }
+    //Stores the upgraded player data
     localStorage.setItem('playerData', JSON.stringify(charData));
     
+    //Update the user's stats 
     function putCharData(charData)
     {
         const requestMethod = {
@@ -91,6 +95,7 @@ confirmButton.addEventListener('click', function() {
             },
             body: JSON.stringify(charData)
         }
+        //Fetches the page with the user's ID at the endpoint then makes a PUT request
         fetch(`${soulsCharEndpoint}?id=${playerID}`, requestMethod)
         .then(response => {
             if(!response.ok){

@@ -83,10 +83,12 @@ function checkStats()
             //Get the user's id so that it can be referenced later for PUT request
             const newUserID = data.id;
             
-            //Put the id in storage
+            //Saves user ID in storage
             localStorage.setItem('userID',newUserID);
             console.log('POST request successful:', data);
+            //Sends player to the next screen
             window.location.href = "/ramjiJarmi/souls/game.html";
+            //Locally stores the Player Data so that it can be referenced later
             localStorage.setItem('playerData', JSON.stringify(charData));
         })
         .catch(error => {
