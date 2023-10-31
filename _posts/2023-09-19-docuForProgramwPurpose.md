@@ -1,11 +1,3 @@
----
-toc: false
-comments: true
-layout: hack
-title: Documentation for Program With Purpose
-type: plans
-courses: { compsci: {week: 4} }
----
 # Chemistry Aid Tool and Calculator Documentation
 ## Introduction
 This is a Python-based Chemistry Aid Tool and Calculator designed to assist users with various chemical calculations and conversions. It provides functionality for common chemical calculations, such as converting between moles and grams, moles and molecules, as well as performing calculations using the Ideal Gas Law (PV=nRT) and energy-frequency relationships (E = hv).
