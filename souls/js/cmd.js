@@ -75,10 +75,7 @@ window.addEventListener("keypress", function (keyPressed) {
             const rooms = document.createTextNode("boss_room");
             const lineBreak = document.createElement("br");
 
-            // list.appendChild(document.createTextNode("**Stats**"))
-            // list.appendChild(document.createElement("br"));
-            // list.appendChild(output);
-            // list.appendChild(document.createElement("br"));
+
             list.appendChild(document.createTextNode("**Rooms**"))
             list.appendChild(document.createElement("br"));
             list.appendChild(rooms);
@@ -99,17 +96,19 @@ window.addEventListener("keypress", function (keyPressed) {
                 .then(data => {
                     // Calculate a cumulative score for each character based on their stats
                     data.forEach(item => {
+                        //get the overall stats so that it can be ordered
                         item.totalStats = item.health + item.attack + item.resistance + item.power;
                     });
         
                     // Sort the data based on the totalStats
                     data.sort((a, b) => b.totalStats - a.totalStats);
                     let i = 1;
-                    // Iterate through the sorted data and create options for each character
+                    // Iterate through the sorted data and display the individual stats of each character
                     data.forEach(item => {
                         const option = document.createElement("option");
                         option.value = item.class_name.toLowerCase();
                         option.textContent = `Numero ${i} | ${item.name} - ${item.class_name} | Attack: ${item.attack} | HP: ${item.health} | Resistance: ${item.resistance} | Power: ${item.power} | Total Level: ${item.totalStats}`;
+                        //append to the div for displaying
                         cop.appendChild(option);
                         i++;
                     });
