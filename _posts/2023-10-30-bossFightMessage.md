@@ -3,7 +3,7 @@ comments: true
 layout: post
 title: Randomly appearing text
 description: souls
-courses: { compsci: {week: 7} }
+courses: { compsci: {week: 3} }
 type: hacks
 ---
 <style>
