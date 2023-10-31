@@ -66,6 +66,37 @@
         #sex{
             font-family: "Garamond", Times, serif;
         }
+        .character-images {
+            display: flex;
+            align-items: center;
+        }
+        
+        .character-option {
+            margin-right: 20px; /* Adjust the margin between images as needed */
+        }
+        
+        .character-option img {
+            cursor: pointer;
+        }
+        
+        @keyframes highlight {
+            from {
+                border-color: transparent;
+            }
+            to {
+                border-color: white;
+            }
+        }
+        
+        .character-option img:hover {
+            animation: highlight 0.5s forwards;
+            border: 3px solid white; /* Apply the border on hover */
+        }
+        
+        .character-option img.clicked {
+            border: 3px solid white; /* Maintain the border when clicked */
+        }
+        
     </style>
 </head>
 <body>
@@ -98,15 +129,27 @@
         <input type="radio" id="other" name="sex" value="other">
         <label for="other">Other</label> -->
 
-        <label>Character Image:</label>
-        <input type="radio" id="character1" name="character" value="character1">
-        <label for="character1"><img src="/ramjiJarmi/souls/images/person1.png" width="75px" height="85px" alt="Character 1"></label>
-
-        <input type="radio" id="character2" name="character" value="character2">
-        <label for="character2"><img src="/ramjiJarmi/souls/images/person2.png" width="75px" height="75px" alt="Character 2"></label>
-
-        <input type="radio" id="character3" name="character" value="character3">
-        <label for="character3"><img src="/ramjiJarmi/souls/images/Person3.png" width="70px" height="75px" alt="Character 3"></label>
+        <div class="character-images">
+            <div>
+                <label>Character Images:</label>
+            </div>
+            <br>
+            <div class="character-option">
+                <input type="radio" id="character1" name="character" value="character1" hidden>
+                <label for="character1"><img src="/ramjiJarmi/souls/images/person1.png" width="75px" height="85px" alt="Character 1" onclick="selectCharacter('character1')"></label>
+            </div>
+        
+            <div class="character-option">
+                <input type="radio" id="character2" name="character" value="character2" hidden>
+                <label for="character2"><img src="/ramjiJarmi/souls/images/person2.png" width="75px" height="85px" alt="Character 2" onclick="selectCharacter('character2')"></label>
+            </div>
+        
+            <div class="character-option">
+                <input type="radio" id="character3" name="character" value="character3" hidden>
+                <label for="character3"><img src="/ramjiJarmi/souls/images/Person3.png" width="70px" height="85px" alt="Character 3" onclick="selectCharacter('character3')"></label>
+            </div>
+        </div>
+        
         
         <div id="result">
             <!-- The data will be displayed here -->
@@ -120,5 +163,19 @@
     </div>
 </body>
 </html>
+<script>
+    document.querySelectorAll('.character-option img').forEach(img => {
+        img.addEventListener('click', function() {
+            // Remove 'clicked' class from all images
+            document.querySelectorAll('.character-option img').forEach(img => {
+                img.classList.remove('clicked');
+            });
+            // Add 'clicked' class to the clicked image
+            this.classList.add('clicked');
+        });
+    });
+    
+
+</script>
 
 

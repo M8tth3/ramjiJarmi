@@ -81,6 +81,10 @@ setTimeout(() => {
     newChatMessage('> RAAHHHHH', '');
 },1000);
 
+function stopBossAttack()
+{
+    clearTimeout(bossAttackTimeout);
+}
 let canPress = true;
 window.addEventListener("keypress", function (keyPressed) {
     if(keyPressed.key === 'f' && canPress === true)
@@ -98,6 +102,7 @@ window.addEventListener("keypress", function (keyPressed) {
             canPress = false;
             newChatMessage('Boss~', 'Ahhhhhh');
             newChatMessage('VICTORY!','');
+            stopBossAttack();
             setTimeout(() => {
                 window.location.href="/ramjiJarmi/souls/upgrade.html";
             },3000);
@@ -113,7 +118,7 @@ function bossAttackInterval(){
         const randomInterval = Math.floor(Math.random()*(maxInterval-minInterval)) + minInterval;
         bossAttack();
         if (currentHealth > 0 && bossHealth > 0){
-            setTimeout(attackWithRandomInterval,randomInterval);
+            bossAttackTimeout = setTimeout(attackWithRandomInterval,randomInterval);
         }
     }
     attackWithRandomInterval();
