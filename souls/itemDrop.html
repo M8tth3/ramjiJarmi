@@ -53,14 +53,28 @@
         <div class="menu">
             <div id="itemDrop">
                 <h2>The boss dropped an item!</h2>
-                <img src="/ramjiJarmi/souls/images/bananaitem.png" alt="Dropped Item" width="400px" height="250px">
+                <img src="" id="item" alt="Dropped Item" width="400px" height="250px">
+                <p id="itemName"></p> <!-- Add a paragraph to display the item name -->
             </div>
             <button id="itemButton" onclick="window.location.href='/ramjiJarmi/souls/upgrade.html'">Add to inventory!</button>
         </div>
     </div>
 
-
     <script>
+        const items = [
+            { name: 'banana', image: '/ramjiJarmi/souls/images/bananaitem.png' },
+            { name: 'sword', image: '/ramjiJarmi/souls/images/minecraftsword.png' },
+            { name: 'popeyes spinach', image: '/ramjiJarmi/souls/images/popeye.png' },
+            { name: 'watermelon sunny d', image: '/ramjiJarmi/souls/images/sunnyDwatermelon.png' },
+        ];
+        const itemIndex = Math.floor(Math.random() * items.length);
+        const selectedItem = items[itemIndex];
+        const itemImage = selectedItem.image;
+        const itemName = selectedItem.name;
+
+        document.getElementById('item').setAttribute('src', itemImage);
+        document.getElementById('itemName').textContent = `Item Name: ${itemName}`;
+
         document.getElementById('itemButton').addEventListener('click', function() {
             alert(`The item has been added to your inventory!`);
         });

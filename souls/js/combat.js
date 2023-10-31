@@ -104,7 +104,7 @@ window.addEventListener("keypress", function (keyPressed) {
             newChatMessage('VICTORY!','');
             stopBossAttack();
             setTimeout(() => {
-                window.location.href="/ramjiJarmi/souls/upgrade.html";
+                window.location.href="/ramjiJarmi/souls/itemDrop.html";
             },3000);
         }
     }})
