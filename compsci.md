@@ -1,6 +1,6 @@
 ---
 layout: schedule
-title: Computer Science Time Box Page
+title: Souls Project Timebox
 units: "1,2"
-course: compsci
+course: pp
 ---
