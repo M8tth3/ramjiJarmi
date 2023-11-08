@@ -113,7 +113,7 @@ window.addEventListener("keypress", function (keyPressed) {
                     data.forEach(item => {
                         const option = document.createElement("option");
                         option.value = item.class_name.toLowerCase();
-                        option.textContent = `Numero ${i} | ${item.name} - ${item.class_name} | Attack: ${item.attack} | HP: ${item.health} | Resistance: ${item.resistance} | Power: ${item.power} | Total Level: ${item.totalStats}`;
+                        option.textContent = `Numero ${i} | ${item.name} - ${item.class_name} | Gender: ${item.gender} | Attack: ${item.attack} | HP: ${item.health} | Resistance: ${item.resistance} | Power: ${item.power} | Total Level: ${item.totalStats}`;
                         //append to the div for displaying
                         cop.appendChild(option);
                         i++;
